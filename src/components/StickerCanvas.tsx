@@ -52,9 +52,9 @@ export const StickerCanvas: React.FC = () => {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Smile className="w-5 h-5 text-amber-500" />
-          <h3 className="text-sm font-bold text-slate-900">Whimsical Sticker Canvas</h3>
+          <h3 className="text-sm font-bold text-slate-900">Interactive Reactions & Canvas</h3>
           <span className="text-[10px] bg-purple-50 text-purple-700 font-semibold px-2 py-0.5 rounded-full border border-purple-200">
-            Interactive Drag & Pop
+            Drag & Drop
           </span>
         </div>
         {stickers.length > 0 && (

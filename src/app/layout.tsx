@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zedu Interactive - Whimsical Human-Agent Lounge",
-  description: "Whimsical human-agent interaction workspace designed for Zedu FE",
+  title: "Zedu Interactive - Agent Lounge",
+  description: "Interactive human-agent workspace and co-pilot playground designed for Zedu FE",
 };
 
 export default function RootLayout({

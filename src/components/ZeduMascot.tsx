@@ -14,7 +14,7 @@ const QUOTES = [
   "Hey Goodness! Endor merged 4 PRs today! 🚀",
   "Want me to summarize that 30-message thread? 💬",
   "High five for clean merges! 🖐️",
-  "Whimsical design makes coding feel like magic ✨",
+  "Delightful details make coding feel like magic ✨",
   "Checking for bugs... nope, all pristine! 🐞",
   "Human + Agent = Superpower! ⚡",
 ];

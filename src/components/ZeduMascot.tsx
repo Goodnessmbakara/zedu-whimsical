@@ -2,9 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Heart, Bot, Zap, MessageCircle } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { sounds } from "./SoundEffects";
-import confetti from "canvas-confetti";
 
 interface MascotProps {
   mood: string;
@@ -20,7 +19,7 @@ const QUOTES = [
   "Human + Agent = Superpower! ⚡",
 ];
 
-export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
+export const ZeduMascot: React.FC<MascotProps> = ({ onHighFive }) => {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [isJumping, setIsJumping] = useState(false);
   const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
@@ -55,11 +54,11 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
         initial={{ opacity: 0, y: 10, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ type: "spring", damping: 15 }}
-        className="mb-4 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs md:text-sm px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2 max-w-xs text-center cursor-pointer hover:scale-105 transition-transform"
+        className="mb-4 bg-white/95 backdrop-blur-md border border-purple-200/80 text-slate-800 text-xs md:text-sm px-4 py-2.5 rounded-2xl shadow-lg shadow-purple-500/10 flex items-center gap-2 max-w-xs text-center cursor-pointer hover:scale-105 transition-transform"
         onClick={handleMascotClick}
       >
-        <Sparkles className="w-4 h-4 text-yellow-300 animate-spin" style={{ animationDuration: "3s" }} />
-        <span>{QUOTES[quoteIndex]}</span>
+        <Sparkles className="w-4 h-4 text-amber-500 animate-spin" style={{ animationDuration: "3s" }} />
+        <span className="font-medium">{QUOTES[quoteIndex]}</span>
       </motion.div>
 
       {/* Mascot Animated Body */}
@@ -72,17 +71,17 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
         className="relative cursor-pointer group"
       >
         {/* Ambient Glow */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/40 to-pink-500/40 rounded-full blur-xl group-hover:blur-2xl transition-all" />
+        <div className="absolute -inset-4 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all" />
 
         {/* Mascot SVG Robot / Blob */}
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 drop-shadow-2xl">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 drop-shadow-xl">
           {/* Antenna */}
           <motion.line
             x1="60"
             y1="25"
             x2="60"
             y2="10"
-            stroke="#aa8dfb"
+            stroke="#8d67fa"
             strokeWidth="4"
             strokeLinecap="round"
             style={{ transformOrigin: "60px 25px" }}
@@ -106,7 +105,7 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
           <rect x="24" y="24" width="72" height="72" rx="24" fill="url(#mascotGradient)" stroke="#c6b3fc" strokeWidth="2.5" />
 
           {/* Visor / Face Screen */}
-          <rect x="34" y="38" width="52" height="34" rx="14" fill="#181534" />
+          <rect x="34" y="38" width="52" height="34" rx="14" fill="#1e1b4b" />
 
           {/* Eyes (Blinking animation) */}
           <motion.ellipse
@@ -132,8 +131,8 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
           <path d="M52 62 Q60 68 68 62" stroke="#ffd166" strokeWidth="2.5" strokeLinecap="round" fill="none" />
 
           {/* Cheeks */}
-          <circle cx="42" cy="58" r="3" fill="#ff6b8b" opacity="0.6" />
-          <circle cx="78" cy="58" r="3" fill="#ff6b8b" opacity="0.6" />
+          <circle cx="42" cy="58" r="3" fill="#ff6b8b" opacity="0.7" />
+          <circle cx="78" cy="58" r="3" fill="#ff6b8b" opacity="0.7" />
 
           {/* Belly Badge */}
           <circle cx="60" cy="84" r="5" fill="#ffd166" />
@@ -141,13 +140,13 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
           <defs>
             <linearGradient id="mascotGradient" x1="24" y1="24" x2="96" y2="96" gradientUnits="userSpaceOnUse">
               <stop stopColor="#7141f8" />
-              <stop offset="1" stopColor="#4c26b0" />
+              <stop offset="1" stopColor="#5521d9" />
             </linearGradient>
           </defs>
         </svg>
 
         {/* High-five Pill Tag */}
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md whitespace-nowrap opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-md whitespace-nowrap opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
           Tap me! 🖐️
         </div>
       </motion.div>
@@ -160,7 +159,7 @@ export const ZeduMascot: React.FC<MascotProps> = ({ mood, onHighFive }) => {
             initial={{ opacity: 1, y: 0, scale: 0.8 }}
             animate={{ opacity: 0, y: -60, scale: 1.4 }}
             exit={{ opacity: 0 }}
-            className="fixed pointer-events-none z-50 text-pink-400 font-bold text-xl"
+            className="fixed pointer-events-none z-50 text-pink-500 font-bold text-xl"
             style={{ left: h.x, top: h.y }}
           >
             ❤️

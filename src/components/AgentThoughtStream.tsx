@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, CheckCircle2, ChevronRight, Play, Sparkles, Wand2, PartyPopper, RefreshCw, Sliders } from "lucide-react";
+import { Bot, CheckCircle2, ChevronRight, Sparkles, PartyPopper, RefreshCw } from "lucide-react";
 import confetti from "canvas-confetti";
 import { sounds } from "./SoundEffects";
 
@@ -100,25 +100,25 @@ export const AgentThoughtStream: React.FC = () => {
   };
 
   return (
-    <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-5 backdrop-blur-md flex flex-col gap-4">
+    <div className="rounded-2xl bg-white border border-slate-200/90 p-5 shadow-sm flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          <div className="p-1.5 rounded-lg bg-purple-50 text-purple-600 border border-purple-200/80">
             <Bot className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               Human-Agent Interactive Reasoning
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
             </h3>
-            <p className="text-xs text-purple-200/60">Live bidirectional collaboration loop</p>
+            <p className="text-xs text-slate-500">Live bidirectional collaboration loop</p>
           </div>
         </div>
 
         <button
           onClick={resetSteps}
-          className="text-xs text-purple-300 hover:text-white flex items-center gap-1 transition-colors px-2 py-1 rounded bg-white/5 hover:bg-white/10"
+          className="text-xs text-purple-600 hover:text-purple-700 flex items-center gap-1 transition-colors px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 border border-purple-200 font-medium"
         >
           <RefreshCw className="w-3 h-3" /> Reset
         </button>
@@ -135,42 +135,42 @@ export const AgentThoughtStream: React.FC = () => {
               onClick={() => toggleExpand(s.id)}
               className={`rounded-xl border p-3 cursor-pointer transition-all ${
                 s.status === "working"
-                  ? "bg-purple-900/30 border-purple-400/50 shadow-lg shadow-purple-900/20"
+                  ? "bg-purple-50/80 border-purple-300 shadow-sm shadow-purple-500/5"
                   : s.status === "done"
-                  ? "bg-white/[0.03] border-emerald-500/30 hover:border-emerald-500/50"
-                  : "bg-white/[0.01] border-white/5 opacity-60"
+                  ? "bg-emerald-50/40 border-emerald-200 hover:border-emerald-300"
+                  : "bg-slate-50/70 border-slate-200/80 opacity-75"
               }`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  {s.status === "done" && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
+                  {s.status === "done" && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
                   {s.status === "working" && (
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                     >
-                      <Sparkles className="w-4 h-4 text-yellow-300" />
+                      <Sparkles className="w-4 h-4 text-purple-600" />
                     </motion.div>
                   )}
-                  {s.status === "pending" && <div className="w-4 h-4 rounded-full border border-gray-500" />}
+                  {s.status === "pending" && <div className="w-4 h-4 rounded-full border border-slate-300 bg-white" />}
 
-                  <span className="text-xs md:text-sm font-medium text-white">{s.title}</span>
+                  <span className="text-xs md:text-sm font-semibold text-slate-800">{s.title}</span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold ${
+                    className={`text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold ${
                       s.status === "done"
-                        ? "bg-emerald-500/20 text-emerald-300"
+                        ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
                         : s.status === "working"
-                        ? "bg-yellow-500/20 text-yellow-300"
-                        : "bg-gray-500/20 text-gray-400"
+                        ? "bg-purple-100 text-purple-700 border border-purple-200"
+                        : "bg-slate-200/80 text-slate-600"
                     }`}
                   >
                     {s.status}
                   </span>
                   <ChevronRight
-                    className={`w-3.5 h-3.5 text-gray-400 transition-transform ${isExpanded ? "rotate-90" : ""}`}
+                    className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isExpanded ? "rotate-90" : ""}`}
                   />
                 </div>
               </div>
@@ -181,11 +181,11 @@ export const AgentThoughtStream: React.FC = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-2 pt-2 border-t border-white/5 text-xs text-purple-200/80 flex flex-col gap-1"
+                    className="mt-2.5 pt-2 border-t border-slate-200/60 text-xs text-slate-600 flex flex-col gap-1.5"
                   >
                     <p>{s.desc}</p>
                     {s.detail && (
-                      <p className="text-[11px] text-purple-300/70 font-mono bg-black/20 p-2 rounded mt-1">
+                      <p className="text-[11px] text-purple-800 font-mono bg-purple-50/90 border border-purple-100 p-2 rounded-lg mt-0.5">
                         💡 {s.detail}
                       </p>
                     )}
@@ -199,12 +199,12 @@ export const AgentThoughtStream: React.FC = () => {
 
       {/* Celebrate Merge CTA */}
       <motion.button
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         onClick={handleCelebrateMerge}
-        className="w-full mt-2 py-3 px-4 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl shadow-purple-900/30 flex items-center justify-center gap-2 border border-white/20 group"
+        className="w-full mt-2 py-3 px-4 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-700 hover:to-indigo-700 shadow-md shadow-purple-600/20 flex items-center justify-center gap-2 border border-purple-500/20 group transition-all"
       >
-        <PartyPopper className="w-5 h-5 text-yellow-300 group-hover:rotate-12 transition-transform" />
+        <PartyPopper className="w-5 h-5 text-amber-300 group-hover:rotate-12 transition-transform" />
         <span>{celebrated ? "PR Shipped to Production! 🎉 (Burst Again)" : "Co-Pilot Approve & Celebrate Merge 🎉"}</span>
       </motion.button>
     </div>
